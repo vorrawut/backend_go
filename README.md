@@ -49,12 +49,6 @@ Setup DynamoDB dependency:  `docker run -d -p 8080:8080 vsouza/dynamo-local --po
 
 ## Installation
 
-__Install Godeps__
-
-`go get github.com/tools/godep`
-
-then run:
-
 ```sh
 make deps
 ```
@@ -68,10 +62,6 @@ make deps
 Running DynamoDB on Docker Image:
 
 check this project: [vsouza/docker-dynamoDB-local](https://github.com/vsouza/docker-dynamoDB-local)
-
-Setup Glide:
-
-[Glide Package Management](https://glide.sh)
 
 ## Release History
 
