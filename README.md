@@ -45,3 +45,7 @@ make deps
 ## Development setup
 
 Running Posgresql and Mongodb with docker compose local file.
+
+
+## Run migration file for Postgresql
+cat /migrates/postgresql-migratation.sql | docker exec -i {docker_postgresql_name} psql -U postgres

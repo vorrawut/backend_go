@@ -1,9 +1,11 @@
 package server
 
 import (
+	"safebsc/controllers"
+	userController "safebsc/features/users/controllers"
+	"safebsc/middlewares"
+
 	"github.com/gin-gonic/gin"
-	"github.com/vsouza/go-gin-boilerplate/controllers"
-	"github.com/vsouza/go-gin-boilerplate/middlewares"
 )
 
 func NewRouter() *gin.Engine {
@@ -20,8 +22,8 @@ func NewRouter() *gin.Engine {
 	{
 		userGroup := v1.Group("user")
 		{
-			user := new(controllers.UserController)
-			userGroup.GET("/:id", user.Retrieve)
+			user := new(userController.UserController)
+			userGroup.GET("/:id", user.GetUsersById)
 		}
 	}
 	return router

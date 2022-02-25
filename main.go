@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/vsouza/go-gin-boilerplate/config"
-	"github.com/vsouza/go-gin-boilerplate/db"
-	"github.com/vsouza/go-gin-boilerplate/server"
+	"safebsc/config"
+	"safebsc/db"
+	"safebsc/server"
 )
 
 func main() {
@@ -18,6 +18,6 @@ func main() {
 	}
 	flag.Parse()
 	config.Init(*environment)
-	db.Init()
+	db.GetConnection()
 	server.Init()
 }
