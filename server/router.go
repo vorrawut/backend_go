@@ -2,6 +2,7 @@ package server
 
 import (
 	"safebsc/controllers"
+	"safebsc/features/sayhello"
 	userController "safebsc/features/users/controllers"
 	"safebsc/middlewares"
 
@@ -16,6 +17,8 @@ func NewRouter() *gin.Engine {
 	health := new(controllers.HealthController)
 
 	router.GET("/health", health.Status)
+	router.GET("/say", sayhello.Handler)
+
 	router.Use(middlewares.AuthMiddleware())
 
 	v1 := router.Group("v1")
@@ -26,6 +29,7 @@ func NewRouter() *gin.Engine {
 			userGroup.GET("/:id", user.GetUsersById)
 		}
 	}
+
 	return router
 
 }

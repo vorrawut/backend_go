@@ -24,9 +24,9 @@ type PostgresConfig struct {
 type PostgresSuperUser struct {
 	Host     string `env:"POSTGRES_HOST" envDefault:"localhost"`
 	Port     string `env:"POSTGRES_PORT" envDefault:"5432"`
-	User     string `env:"POSTGRES_SUPERUSER" envDefault:"postgres"`
+	User     string `env:"POSTGRES_SUPERUSER" envDefault:"safebsc/postgres"`
 	Password string `env:"POSTGRES_SUPERUSER_PASSWORD" envDefault:""`
-	Database string `env:"POSTGRES_SUPERUSER_DB" envDefault:"postgres"`
+	Database string `env:"POSTGRES_SUPERUSER_DB" envDefault:"safebsc/postgres"`
 }
 
 // GetConnection returns our pg database connection

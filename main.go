@@ -6,7 +6,7 @@ import (
 	"os"
 
 	"safebsc/config"
-	"safebsc/db"
+	dbconnect "safebsc/db"
 	"safebsc/server"
 )
 
@@ -18,6 +18,11 @@ func main() {
 	}
 	flag.Parse()
 	config.Init(*environment)
-	db.GetConnection()
+	db := dbconnect.GetConnection()
+	defer db.Close()
+	q := "select now();"
+	fmt.Println(q)
+	fmt.Println(db.Conn().Exec(q))
+
 	server.Init()
 }
