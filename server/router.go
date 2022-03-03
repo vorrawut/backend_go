@@ -2,6 +2,7 @@ package server
 
 import (
 	"safebsc/controllers"
+	alertPriceController "safebsc/features/alert_price/controllers"
 	"safebsc/features/sayhello"
 	userController "safebsc/features/users/controllers"
 	"safebsc/middlewares"
@@ -26,7 +27,16 @@ func NewRouter() *gin.Engine {
 		userGroup := v1.Group("user")
 		{
 			user := new(userController.UserController)
-			userGroup.GET("/:id", user.GetUsersById)
+			userGroup.POST("/users", user.Login)
+			userGroup.GET("/users/{userId}", user.GetUsersById)
+		}
+
+		alertPriceGroup := v1.Group("alertPrice")
+		{
+			alertPrice := new(alertPriceController.AlertPriceController)
+			alertPriceGroup.GET("/alert-price/userId/{userId}/tokenAddress/", alertPrice.GetAlertPrice)
+			alertPriceGroup.POST("/alert-price", alertPrice.AddAlertPrice)
+			alertPriceGroup.DELETE("/alert-price/userId/{userId}/alertPriceId/{alertPriceId}", alertPrice.DeleteAlertPrice)
 		}
 	}
 
