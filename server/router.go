@@ -3,7 +3,7 @@ package server
 import (
 	"safebsc/controllers"
 	alertPriceController "safebsc/features/alert_price/controllers"
-	"safebsc/features/sayhello"
+	customTokenController "safebsc/features/custom_token/controllers"
 	userController "safebsc/features/users/controllers"
 	"safebsc/middlewares"
 
@@ -18,7 +18,6 @@ func NewRouter() *gin.Engine {
 	health := new(controllers.HealthController)
 
 	router.GET("/health", health.Status)
-	router.GET("/say", sayhello.Handler)
 
 	router.Use(middlewares.AuthMiddleware())
 
@@ -38,6 +37,15 @@ func NewRouter() *gin.Engine {
 			alertPriceGroup.POST("/alert-price", alertPrice.AddAlertPrice)
 			alertPriceGroup.DELETE("/alert-price/userId/{userId}/alertPriceId/{alertPriceId}", alertPrice.DeleteAlertPrice)
 		}
+
+		customTokenGroup := v1.Group("customToken")
+		{
+			customToken := new(customTokenController.CustomTokenController)
+			customTokenGroup.GET("/alert-price/userId/{userId}/tokenAddress/", customToken.GetCustomToken)
+			customTokenGroup.POST("/alert-price", customToken.AddCustomToken)
+			customTokenGroup.DELETE("/alert-price/userId/{userId}/alertPriceId/{alertPriceId}", customToken.RemoveCustomToken)
+		}
+
 	}
 
 	return router
