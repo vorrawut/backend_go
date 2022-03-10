@@ -6,8 +6,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type AprController struct{}
+type Controller struct{}
 
-func (u AprController) GetAprCurrent(c *gin.Context) {
+func (u Controller) GetAprCurrent(c *gin.Context) {
 	services.GetAprCurrent(c)
 }

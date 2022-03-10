@@ -15,9 +15,9 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type InitDataController struct{}
+type Controller struct{}
 
-func (u InitDataController) InitDataHandler(c *gin.Context) {
+func (u Controller) InitDataHandler(c *gin.Context) {
 	initDataHandler(c)
 }
 

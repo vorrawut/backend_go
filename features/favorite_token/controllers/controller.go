@@ -12,10 +12,18 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type FavoriteTokenController struct{}
+type Controller struct{}
 
-func (u FavoriteTokenController) GetFavoriteToken(c *gin.Context) {
+func (u Controller) GetFavoriteToken(c *gin.Context) {
 	getFavoriteToken(c)
+}
+
+func (u Controller) AddFavoriteToken(c *gin.Context) {
+	addFavoriteToken(c)
+}
+
+func (u Controller) RemoveFavoriteToken(c *gin.Context) {
+	removeFavoriteToken(c)
 }
 
 func getFavoriteToken(c *gin.Context) {

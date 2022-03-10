@@ -14,17 +14,17 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type FarmConfigController struct{}
+type Controller struct{}
 
-func (u FarmConfigController) GetFarmConfig(c *gin.Context) {
+func (u Controller) GetFarmConfig(c *gin.Context) {
 	getFarmConfig(c)
 }
 
-func (u FarmConfigController) SetFarmConfig(c *gin.Context) {
+func (u Controller) SetFarmConfig(c *gin.Context) {
 	setFarmConfig(c)
 }
 
-func (u FarmConfigController) BulkUpdateFarmConfig(c *gin.Context) {
+func (u Controller) BulkUpdateFarmConfig(c *gin.Context) {
 	bulkUpdateFarmConfig(c)
 }
 
